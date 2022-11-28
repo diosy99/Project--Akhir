@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/diosy99/Project--Akhir#readme",
   "dependencies": {
+    "chai-http": "^4.3.0",
+    "chai-json-schema": "^1.5.1",
+    "dotenv": "^16.0.3",
     "mocha": "^10.1.0",
     "supertest": "^6.3.1"
   },
