@@ -23,7 +23,7 @@ module.exports = function () {
                 .end(function (err, res) {
                     console.log(status)
                     expect(res.status).to.equal(201);
-                    //expect(res.accessToken).to.equals("")
+                    expect(res.accessToken).to.equals("")
                     expect(res.body).to.jsonSchema(loginSchema.validData)
                     done();
                 });

@@ -1,0 +1,58 @@
+{
+    "validData" : [
+        {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/Welcome6Element"
+            },
+            "definitions": {
+                "Welcome6Element": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "bookId": {
+                            "type": "integer"
+                        },
+                        "customerName": {
+                            "$ref": "#/definitions/CustomerName"
+                        },
+                        "createdBy": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "integer"
+                        },
+                        "timestamp": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "bookId",
+                        "createdBy",
+                        "customerName",
+                        "id",
+                        "quantity",
+                        "timestamp"
+                    ],
+                    "title": "Welcome6Element"
+                },
+                "CustomerName": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "CustomerName"
+                }
+            }
+        }
+        
+    ]
+}
