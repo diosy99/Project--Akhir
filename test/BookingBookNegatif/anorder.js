@@ -6,22 +6,22 @@ const { it } = require("mocha");
 chai.use(chaiJsonSchema);
 chai.use(chaiHttp);
 require("dotenv").config();
-const deleteOrderSchema = require("../../resources/schema/bookingbook/delete.json");
+const anOrderSchema = require("../../resources/schema/bookingbooknegatif/anorder.json");
 const api = chai.request(process.env.bookingBookUrl);
-let deleteOrderApi = "/orders/"
+let anOrderApi = "/orders/"
 
 module.exports = function () {
-    describe("test delete order", function () {
-        let idCostumerName = "BHUKhxCiDSPv7-ugSUgh2"
+    describe("test Get an order", function () {
+        let idCostumerName = "5dQ8M09LbIZVE-kApX3d"
 
         it("success create order", function (done) {
-            api.delete(deleteOrderApi + idCostumerName)
+            api.get(anOrderApi + idCostumerName)
                 .set("Authorization", "Bearer " + process.env.bookingBookToken)
 
                 .end(function (err, res) {
-                    console.log(res.body)
-                    expect(res.status).to.equals(204);
-                    expect(res.body).to.be.jsonSchema(deleteOrderSchema);
+                    expect(res.status).to.equals(404);
+                    expect(res.body.error).to.equals('No order with id 5dQ8M09LbIZVE-kApX3d.');
+                    expect(res.body).to.be.jsonSchema(anOrderSchema.invalidId);
                     done();
                 });
         });
