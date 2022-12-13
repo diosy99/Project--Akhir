@@ -19,7 +19,6 @@ module.exports = function () {
                 .set("Authorization", "Bearer " + process.env.bookingBookToken)
 
                 .end(function (err, res) {
-                    console.log(res.body)
                     expect(res.status).to.equals(204);
                     expect(res.body).to.be.jsonSchema(deleteOrderSchema);
                     done();
