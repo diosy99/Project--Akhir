@@ -2,7 +2,6 @@ const chai = require("chai");
 const expect = require("chai").expect;
 const chaiHttp = require("chai-http");
 const chaiJsonSchema = require("chai-json-schema");
-const { it } = require("mocha");
 chai.use(chaiJsonSchema);
 chai.use(chaiHttp);
 require("dotenv").config();
@@ -18,13 +17,12 @@ module.exports = function () {
                 .set("Authorization", "Bearer " + process.env.bookingBookToken)
 
                 .send({
-                    "bookId": 1,
-                    "customerName": "John109"
+                    "bookId": process.env.bookingId,
+                    "customerName": process.env.costumerName
 
                 })
 
                 .end(function (err, res) {
-                    //console.log(res.body.created);
                     expect(res.status).to.equals(201);
                     expect(res.body.created).to.equals(true);
                     expect(res.body).to.be.jsonSchema(submitAnOrderSchema.validData);
